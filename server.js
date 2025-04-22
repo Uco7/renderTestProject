@@ -18,15 +18,14 @@ app.use(bodyParser.json());
 // MongoDB + Schema
 const connectDB = async () => {
   try {
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGO_URI);
     console.log("✅ MongoDB connected");
   } catch (error) {
     console.error("❌ MongoDB connection error:", error.message);
   }
 };
+
+connectDB();
 
 // Define schema
 const userSchema = new mongoose.Schema({
@@ -40,40 +39,33 @@ const userSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-const User = mongoose.model('User', userSchema);
-  
+const User = mongoose.model('tests', userSchema);
 
+// Routes
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
+
 app.get('/form', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'form.html'));
 });
 
-// Route to handle form submission
+// ✅ Route to handle form submission
 app.post('/register', async (req, res) => {
-  const { name, email, password, role } = req.body;
-
   try {
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.send("❗User with this email already exists.");
-    }
+    const { name, email, password, role } = req.body;
 
-    const newUser = new User({ name, email, password, role });
-    await newUser.save();
+    const user = new User({ name, email, password, role });
+    await user.save();
 
-    res.send("✅ User registered successfully!");
+    console.log("✅ User registered:", user.email);
+    res.status(201).send("✅ User registered successfully!");
   } catch (error) {
-    console.error("❌ Error saving user:", error.message);
-    res.send("❌ Failed to register user.");
+    console.error("❌ Failed to register user:", error.message);
+    res.status(400).send("❌ Failed to register user. " + error.message);
   }
 });
 
-// Start server
-app.listen(PORT, async () => {
-  await connectDB();
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`🚀 Server is running on port ${PORT}`);
 });
-
-

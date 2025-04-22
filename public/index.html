@@ -3,22 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Simple Render App</title>
+  <title>World Happenings Today | Global News Snapshot</title>
+  <meta name="google-site-verification" content="M60Olg-0SeKKaphxHbi0snS6Gx3UKMKEdPolld_FFbw" />
+  <meta name="description" content="Stay updated with the latest world happenings including politics, technology, climate, and more.">
+  <meta name="keywords" content="World News, Global Events, Headlines, Current Affairs, Technology, Politics, Climate">
+  <meta name="author" content="Your Name or Site">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="World Happenings Today">
+  <meta property="og:description" content="Get a quick overview of what's happening around the world right now.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/world-news">
+  <meta property="og:image" content="https://yourdomain.com/news-preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="World Happenings Today">
+  <meta name="twitter:description" content="Quick headlines and global updates, all in one place.">
+  <meta name="twitter:image" content="https://yourdomain.com/news-preview.png">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f9;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    .news-section {
+      max-width: 800px;
+      margin: auto;
+    }
+    .news-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1.5rem;
+    }
+    .news-item h2 {
+      color: #34495e;
+      font-size: 1.3rem;
+    }
+    .news-item p {
+      font-size: 1rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to My Simple Render App</h1>
-  <p>This is the frontend served by Express.</p>
-  <button onclick="sayHello()">Say Hello</button>
-  <p id="response"></p>
+  <header>
+    <h1>🌍 World Happenings Today</h1>
+    <p>Catch up on important events and breaking news from around the globe.</p>
+  </header>
 
-  <script>
-    function sayHello() {
-      fetch('/api/hello')
-        .then(res => res.json())
-        .then(data => {
-          document.getElementById('response').innerText = data.message;
-        });
-    }
-  </script>
+  <section class="news-section">
+    <div class="news-item">
+      <h2>🌡️ Climate Alert: Record Temperatures Across Continents</h2>
+      <p>Many countries are experiencing unprecedented heatwaves, with scientists urging urgent climate action.</p>
+    </div>
+    <div class="news-item">
+      <h2>🗳️ Global Elections Shift Power Dynamics</h2>
+      <p>Several national elections around the world are bringing new leaders into power, signaling possible geopolitical changes.</p>
+    </div>
+    <div class="news-item">
+      <h2>📱 Tech Giants Launch AI-Powered Innovations</h2>
+      <p>Leading tech companies have unveiled new AI tools set to transform industries from healthcare to education.</p>
+    </div>
+    <div class="news-item">
+      <h2>⚔️ Conflicts and Peace Talks in Progress</h2>
+      <p>While conflicts persist in some regions, new rounds of peace talks offer hope for diplomatic solutions.</p>
+    </div>
+    <div class="news-item">
+      <h2>🦠 Global Health: New Research on Long COVID</h2>
+      <p>Researchers have discovered new patterns and potential treatments for long COVID symptoms.</p>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 World Happenings • Updated Daily • Powered by Express.js
+  </footer>
 </body>
 </html>
