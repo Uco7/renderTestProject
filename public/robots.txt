@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rendertestproject-uyzh.onrender.com/sitemap.xml
