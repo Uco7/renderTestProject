@@ -42,6 +42,12 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('tests', userSchema);
 
 // Routes
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  res.sendFile(path.join(__dirname, 'public', 'sitemap.xml'));
+});
+
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
